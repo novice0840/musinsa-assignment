@@ -1,11 +1,9 @@
-import Header from "@/components/Header";
 import CareerFilter from "@/components/CareerFilter";
 import CareerList from "@/components/CareerList";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <main className="">
         <div className="w-4xl mx-auto mt-24">
           <div className="text-5xl font-bold">TEAM MUSINSA</div>
