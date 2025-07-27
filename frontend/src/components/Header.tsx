@@ -3,15 +3,13 @@ import { Button } from "./ui/button";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50  border-b  shadow-sm">
+    <header className="sticky top-0 bg-white border-b  shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* 로고 */}
           <div className="flex-shrink-0">
             <h1 className="text-xl font-bold text-gray-900">MUSINSA</h1>
           </div>
 
-          {/* 네비게이션 메뉴 */}
           <nav className="hidden md:flex space-x-8">
             <a
               href="#"
@@ -39,7 +37,6 @@ const Header = () => {
             </a>
           </nav>
 
-          {/* 우측 버튼들 */}
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="sm">
               로그인
@@ -47,7 +44,6 @@ const Header = () => {
             <Button size="sm">회원가입</Button>
           </div>
 
-          {/* 모바일 메뉴 버튼 */}
           <div className="md:hidden">
             <Button variant="ghost" size="icon">
               <svg
