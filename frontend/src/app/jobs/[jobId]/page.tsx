@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CAREER_LIST } from "@/constants/career";
+import Link from "next/link";
 import React from "react";
 
 interface JobsPageProps {
@@ -87,7 +88,9 @@ const JobsPage = ({ params }: JobsPageProps) => {
               <p>{career.place}</p>
             </div>
           </div>
-          <Button>지원하기</Button>
+          <Link href={`/jobs/${jobId}/apply`}>
+            <Button className="w-full">지원하기</Button>
+          </Link>
         </div>
       </div>
     </div>
