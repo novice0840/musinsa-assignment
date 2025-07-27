@@ -1,9 +1,12 @@
+"use client";
+
+import React, { useState } from "react";
 import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import React from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 
 interface CareerFilterItemProps {
   itemTitle: string;
@@ -16,6 +19,29 @@ const CareerFilterItem = ({
   itemKoreanTitle,
   items,
 }: CareerFilterItemProps) => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const initialCheckedItems = searchParams.getAll(itemTitle);
+  const [checkedItems, setCheckedItems] =
+    useState<string[]>(initialCheckedItems);
+
+  const handleCheckboxChange = (item: string, checked: boolean) => {
+    const newCheckedItems = checked
+      ? [...checkedItems, item]
+      : checkedItems.filter((checkedItem) => checkedItem !== item);
+
+    setCheckedItems(newCheckedItems);
+    const params = new URLSearchParams(searchParams);
+    params.delete(itemTitle);
+
+    newCheckedItems.forEach((checkedItem) => {
+      params.append(itemTitle, checkedItem);
+    });
+
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
+
   return (
     <AccordionItem value={itemTitle}>
       <AccordionTrigger>{itemKoreanTitle}</AccordionTrigger>
@@ -24,11 +50,13 @@ const CareerFilterItem = ({
           <div key={index} className="flex items-center space-x-2">
             <input
               type="checkbox"
-              id={`subsidiary-${index}`}
+              id={`${itemTitle}-${index}`}
+              checked={checkedItems.includes(item)}
+              onChange={(e) => handleCheckboxChange(item, e.target.checked)}
               className="w-4 h-4 rounded"
             />
             <label
-              htmlFor={`subsidiary-${index}`}
+              htmlFor={`${itemTitle}-${index}`}
               className="text-sm font-medium text-gray-900 cursor-pointer"
             >
               {item}

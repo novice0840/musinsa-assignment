@@ -19,16 +19,26 @@ import CareerFilterItem from "./CareerFilterItem";
 const CareerFilter = () => {
   return (
     <div className="w-64">
-      <Accordion type="multiple">
+      <Accordion
+        type="multiple"
+        defaultValue={[
+          "subsidiaries",
+          "occupations",
+          "jobs",
+          "careers",
+          "employments",
+          "places",
+        ]}
+      >
         <CareerFilterItem
           itemTitle="subsidiaries"
           itemKoreanTitle="구분"
-          items={OCCUPATIONS}
+          items={SUBSIDIARIES}
         />
         <CareerFilterItem
           itemTitle="occupations"
           itemKoreanTitle="직군"
-          items={CAREERS}
+          items={OCCUPATIONS}
         />
         <CareerFilterItem
           itemTitle="jobs"
@@ -36,8 +46,8 @@ const CareerFilter = () => {
           items={JOBS}
         />
         <CareerFilterItem
-          itemTitle="경력사항"
-          itemKoreanTitle="careers"
+          itemTitle="careers"
+          itemKoreanTitle="경력사항"
           items={CAREERS}
         />
         <CareerFilterItem

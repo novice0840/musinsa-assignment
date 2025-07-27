@@ -9,7 +9,7 @@ const CareerList = () => {
 
   const filteredCareers = searchTerm.trim()
     ? CAREER_LIST.filter((career) =>
-        career.job.toLowerCase().includes(searchTerm.toLowerCase())
+        career.description.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : CAREER_LIST;
 
@@ -24,11 +24,18 @@ const CareerList = () => {
       </div>
       <ul>
         {filteredCareers.map((career) => (
-          <li key={career.id} className="py-6 border-b">
-            <div className="text-2xl font-bold mb-2">{career.occupation}</div>
+          <li
+            key={career.id}
+            className="py-6 border-b cursor-pointer  group"
+            tabIndex={0}
+          >
+            <div className="text-2xl font-bold mb-2 group-hover:text-gray-500 ">
+              {career.description}
+            </div>
             <div className="text-sm text-gray-600">
-              {career.subsidiary} | {career.job} | {career.career} |{" "}
-              {career.place}
+              {career.subsidiary} | {career.occupation} | {career.job} |{" "}
+              {career.career > 0 ? `경력 ${career.career}년 이상` : "경력 무관"}{" "}
+              | {career.employment} | {career.place}
             </div>
           </li>
         ))}
