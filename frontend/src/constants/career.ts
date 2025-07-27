@@ -11,12 +11,11 @@ export const OCCUPATIONS = [
   "Business",
   "Content",
   "Operation",
-  "Design",
+  "Designer",
   "MD",
   "Product",
   "Marketing",
   "Operation Management",
-  "Product",
   "Sales",
 ];
 

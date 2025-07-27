@@ -1,17 +1,12 @@
 "use client";
 
-import { CAREER_LIST } from "@/constants/career";
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
+import { useFilteredCareers } from "@/hooks/useFilteredCareers";
 
 const CareerList = () => {
   const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredCareers = searchTerm.trim()
-    ? CAREER_LIST.filter((career) =>
-        career.description.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    : CAREER_LIST;
+  const filteredCareers = useFilteredCareers(searchTerm);
 
   return (
     <div className="w-full">
