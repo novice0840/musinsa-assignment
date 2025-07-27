@@ -85,11 +85,8 @@ const ApplyPage = ({ params }: JobsPageProps) => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          {/* 기본정보 섹션 */}
           <div className="border-b pb-6">
-            <h2 className="text-xl font-bold mb-4">
-              기본정보 <span className="text-red-500">*</span>
-            </h2>
+            <h2 className="text-xl font-bold mb-4">기본정보</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
@@ -154,10 +151,8 @@ const ApplyPage = ({ params }: JobsPageProps) => {
             </div>
           </div>
 
-          {/* 제출 서류 섹션 */}
           <div className="border-b pb-6">
             <h2 className="text-xl font-bold mb-4">제출 서류</h2>
-
             <div className="space-y-4">
               <FormField
                 control={form.control}
@@ -205,7 +200,6 @@ const ApplyPage = ({ params }: JobsPageProps) => {
             </div>
           </div>
 
-          {/* 사전질문 섹션 */}
           <div className="border-b pb-6">
             <h2 className="text-xl font-bold mb-4">사전질문</h2>
 
@@ -254,12 +248,9 @@ const ApplyPage = ({ params }: JobsPageProps) => {
             />
           </div>
 
-          {/* 제출 버튼 */}
-          <div className="flex justify-end">
-            <Button type="submit" size="lg">
-              지원서 제출하기
-            </Button>
-          </div>
+          <Button type="submit" className="w-full">
+            지원서 제출하기
+          </Button>
         </form>
       </Form>
     </div>
