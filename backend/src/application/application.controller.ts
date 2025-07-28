@@ -76,10 +76,20 @@ export class ApplicationController {
     const API_SERVER_URL = this.configService.get<string>('API_SERVER_URL');
     await this.applicationService.create({
       ...createApplicationDto,
-      resumeUrl: API_SERVER_URL + '/upload/' + files.resume?.[0]?.filename,
+      resumeUrl: API_SERVER_URL + '/uploads/' + files.resume?.[0]?.filename,
       portfolioUrl:
-        API_SERVER_URL + '/upload/' + files.portfolio?.[0]?.filename,
+        API_SERVER_URL + '/uploads/' + files.portfolio?.[0]?.filename,
     });
     return { result: 'success' };
+  }
+
+  @Get()
+  @ApiOperation({ summary: '모든 지원서 조회' })
+  @ApiResponse({
+    status: 200,
+    description: '지원서 목록을 성공적으로 조회했습니다.',
+  })
+  findAll() {
+    return this.applicationService.findAll();
   }
 }

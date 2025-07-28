@@ -7,36 +7,12 @@ export class JobService {
   constructor(private prisma: PrismaService) {}
 
   async create(createJobDto: CreateJobDto) {
-    // return this.prisma.job.create({
-    //   data: createJobDto,
-    // });
+    return this.prisma.job.create({
+      data: createJobDto,
+    });
   }
 
   async findAll() {
-    // return this.prisma.job.findMany({
-    //   where: { isActive: true },
-    //   include: {
-    //     _count: {
-    //       select: { applications: true },
-    //     },
-    //   },
-    //   orderBy: { createdAt: 'desc' },
-    // });
-  }
-
-  async findOne(id: number) {
-    // return this.prisma.job.findUnique({
-    //   where: { id },
-    //   include: {
-    //     applications: {
-    //       select: {
-    //         id: true,
-    //         name: true,
-    //         email: true,
-    //         createdAt: true,
-    //       },
-    //     },
-    //   },
-    // });
+    return this.prisma.job.findMany();
   }
 }

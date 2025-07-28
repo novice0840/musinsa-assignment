@@ -17,6 +17,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Link from "next/link";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   name: z.string().min(1, "이름을 입력해주세요"),
@@ -38,6 +40,7 @@ interface JobsPageProps {
 
 const ApplyPage = ({ params }: JobsPageProps) => {
   const { jobId } = use(params);
+  const router = useRouter();
   const career = CAREER_LIST.find((item) => item.id === parseInt(jobId));
 
   const form = useForm<FormData>({
@@ -67,16 +70,23 @@ const ApplyPage = ({ params }: JobsPageProps) => {
       formData.append("portfolio", data.portfolio[0]);
     }
 
-    fetch("http://localhost:3001/applications", {
+    fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/applications`, {
       method: "POST",
       body: formData,
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("지원서 제출에 실패했습니다.");
+        }
+        return response.json();
+      })
       .then((result) => {
-        console.log("Success:", result);
+        router.push(`/`);
+        toast.success("지원서가 성공적으로 제출되었습니다.");
       })
       .catch((error) => {
         console.error("Error:", error);
+        toast.error("지원서 제출 중 오류가 발생했습니다. 다시 시도해주세요.");
       });
   };
 

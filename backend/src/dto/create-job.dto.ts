@@ -1,52 +1,32 @@
-import { IsString, IsOptional, IsBoolean } from 'class-validator';
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsString, IsInt } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateJobDto {
-  @ApiProperty({ description: '채용 공고 제목' })
+  @ApiProperty({ description: '자회사/계열사명' })
   @IsString()
-  title: string;
+  subsidiary: string;
 
-  @ApiProperty({ description: '회사명' })
+  @ApiProperty({ description: '직무' })
   @IsString()
-  company: string;
+  occupation: string;
 
-  @ApiPropertyOptional({ description: '근무 지역' })
-  @IsOptional()
+  @ApiProperty({ description: '담당업무' })
   @IsString()
-  location?: string;
+  job: string;
 
-  @ApiPropertyOptional({ description: '업무 설명' })
-  @IsOptional()
+  @ApiProperty({ description: '업무 설명' })
   @IsString()
-  description?: string;
+  description: string;
 
-  @ApiPropertyOptional({ description: '자격 요건' })
-  @IsOptional()
+  @ApiProperty({ description: '경력 (년수)' })
+  @IsInt()
+  career: number;
+
+  @ApiProperty({ description: '고용형태' })
   @IsString()
-  requirements?: string;
+  employment: string;
 
-  @ApiPropertyOptional({ description: '복리후생' })
-  @IsOptional()
+  @ApiProperty({ description: '근무지' })
   @IsString()
-  benefits?: string;
-
-  @ApiPropertyOptional({ description: '급여' })
-  @IsOptional()
-  @IsString()
-  salary?: string;
-
-  @ApiPropertyOptional({ description: '근무 형태 (정규직, 계약직, 인턴 등)' })
-  @IsOptional()
-  @IsString()
-  workType?: string;
-
-  @ApiPropertyOptional({ description: '경력 요건 (신입, 경력 등)' })
-  @IsOptional()
-  @IsString()
-  experience?: string;
-
-  @ApiPropertyOptional({ description: '활성 상태', default: true })
-  @IsOptional()
-  @IsBoolean()
-  isActive?: boolean;
+  place: string;
 }

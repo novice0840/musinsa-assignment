@@ -11,4 +11,15 @@ export class ApplicationService {
       data: createApplicationDto,
     });
   }
+
+  async findAll() {
+    return this.prisma.application.findMany({
+      include: {
+        job: true, // job 테이블의 모든 필드를 포함
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+  }
 }
