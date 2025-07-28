@@ -52,8 +52,32 @@ const ApplyPage = ({ params }: JobsPageProps) => {
   });
 
   const onSubmit = (data: FormData) => {
-    console.log(data);
-    // 여기에 폼 제출 로직을 추가하세요
+    const formData = new FormData();
+    formData.append("jobId", jobId);
+    formData.append("name", data.name);
+    formData.append("email", data.email);
+    formData.append("phone", data.phone);
+    formData.append("englishName", data.englishName);
+    formData.append("source", data.source);
+
+    if (data.resume && data.resume.length > 0) {
+      formData.append("resume", data.resume[0]);
+    }
+    if (data.portfolio && data.portfolio.length > 0) {
+      formData.append("portfolio", data.portfolio[0]);
+    }
+
+    fetch("http://localhost:3001/applications", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log("Success:", result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   if (!career) {

@@ -69,7 +69,13 @@ export class ApplicationController {
       portfolio?: Express.Multer.File[];
     },
   ) {
-    return this.applicationService.create(createApplicationDto, files);
+    console.log('Received createApplicationDto:', createApplicationDto);
+    console.log(
+      'Received files2:',
+      files.resume?.[0]?.path,
+      files.portfolio?.[0]?.path,
+    );
+    // return this.applicationService.create(createApplicationDto, files);
   }
 
   @Get()
@@ -79,7 +85,7 @@ export class ApplicationController {
     description: '지원서 목록을 성공적으로 조회했습니다.',
   })
   findAll() {
-    return this.applicationService.findAll();
+    // return this.applicationService.findAll();
   }
 
   @Get(':id')
@@ -90,17 +96,6 @@ export class ApplicationController {
     description: '지원서를 성공적으로 조회했습니다.',
   })
   findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.applicationService.findOne(id);
-  }
-
-  @Get('job/:jobId')
-  @ApiOperation({ summary: '특정 채용 공고의 지원서 목록 조회' })
-  @ApiParam({ name: 'jobId', description: '채용 공고 ID' })
-  @ApiResponse({
-    status: 200,
-    description: '채용 공고별 지원서 목록을 성공적으로 조회했습니다.',
-  })
-  findByJobId(@Param('jobId', ParseIntPipe) jobId: number) {
-    return this.applicationService.findByJobId(jobId);
+    // return this.applicationService.findOne(id);
   }
 }

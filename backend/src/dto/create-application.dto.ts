@@ -1,8 +1,10 @@
 import { IsString, IsInt, IsEmail, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { Transform } from 'class-transformer';
 
 export class CreateApplicationDto {
   @ApiProperty({ description: '채용 공고 ID' })
+  @Transform(({ value }) => parseInt(value))
   @IsInt()
   jobId: number;
 
@@ -22,21 +24,16 @@ export class CreateApplicationDto {
   @IsString()
   englishName: string;
 
-  @ApiProperty({ 
-    description: '이력서 파일', 
-    type: 'string', 
-    format: 'binary' 
+  @ApiProperty({
+    description: '이력서 파일',
   })
-  resume: any; // Express.Multer.File
+  resumeUrl: string;
 
-  @ApiProperty({ 
-    description: '포트폴리오 파일', 
-    type: 'string', 
-    format: 'binary',
-    required: false 
+  @ApiProperty({
+    description: '포트폴리오 파일',
   })
   @IsOptional()
-  portfolio?: any; // Express.Multer.File
+  portfolioUrl?: string;
 
   @ApiProperty({ description: '공고를 접한 경로' })
   @IsString()

@@ -57,7 +57,7 @@ export class JobController {
     @Param('id', ParseIntPipe) id: number,
     @Body() updateJobDto: Partial<CreateJobDto>,
   ) {
-    return this.jobService.update(id, updateJobDto);
+    // return this.jobService.update(id, updateJobDto);
   }
 
   @Delete(':id')
@@ -67,6 +67,6 @@ export class JobController {
     description: '채용 공고가 성공적으로 삭제되었습니다.',
   })
   remove(@Param('id', ParseIntPipe) id: number) {
-    return this.jobService.remove(id);
+    // return this.jobService.remove(id);
   }
 }

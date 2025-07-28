@@ -9,20 +9,16 @@ datasource db {
 
 model Job {
   id          Int      @id @default(autoincrement())
-  title       String
-  company     String
-  location    String?
-  description String?  @db.Text
-  requirements String? @db.Text
-  benefits    String?  @db.Text
-  salary      String?
-  workType    String?  // 정규직, 계약직, 인턴 등
-  experience  String?  // 신입, 경력 등
-  isActive    Boolean  @default(true)
+  subsidiary  String
+  occupation  String
+  job         String
+  description String
+  career      Int
+  employment  String
+  place       String
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  updatedAt   DateTime @default(now()) @updatedAt
   
-  // 관계 설정
   applications Application[]
 }
 
@@ -33,12 +29,11 @@ model Application {
   email       String
   phone       String
   englishName String
-  resumeUrl   String?
+  resumeUrl   String
   portfolioUrl String?
   source      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   
-  // 관계 설정
   job         Job      @relation(fields: [jobId], references: [id])
 }
