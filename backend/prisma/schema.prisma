@@ -1,16 +1,29 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Job {
+  id          Int      @id @default(autoincrement())
+  title       String
+  company     String
+  location    String?
+  description String?  @db.Text
+  requirements String? @db.Text
+  benefits    String?  @db.Text
+  salary      String?
+  workType    String?  // 정규직, 계약직, 인턴 등
+  experience  String?  // 신입, 경력 등
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // 관계 설정
+  applications Application[]
 }
 
 model Application {
@@ -25,6 +38,7 @@ model Application {
   source      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
-  @@map("applications")
+  
+  // 관계 설정
+  job         Job      @relation(fields: [jobId], references: [id])
 }

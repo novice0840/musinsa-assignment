@@ -22,15 +22,21 @@ export class CreateApplicationDto {
   @IsString()
   englishName: string;
 
-  @ApiProperty({ description: '이력서 파일 URL', required: false })
-  @IsOptional()
-  @IsString()
-  resumeUrl?: string;
+  @ApiProperty({ 
+    description: '이력서 파일', 
+    type: 'string', 
+    format: 'binary' 
+  })
+  resume: any; // Express.Multer.File
 
-  @ApiProperty({ description: '포트폴리오 파일 URL', required: false })
+  @ApiProperty({ 
+    description: '포트폴리오 파일', 
+    type: 'string', 
+    format: 'binary',
+    required: false 
+  })
   @IsOptional()
-  @IsString()
-  portfolioUrl?: string;
+  portfolio?: any; // Express.Multer.File
 
   @ApiProperty({ description: '공고를 접한 경로' })
   @IsString()
