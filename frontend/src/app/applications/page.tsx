@@ -1,5 +1,4 @@
 import CareerFilter from "@/components/CareerFilter";
-import CareerList from "@/components/CareerList";
 import ApplicantionList from "./components/ApplicantionList";
 
 const ApplicationsPage = () => {
@@ -9,7 +8,6 @@ const ApplicationsPage = () => {
       <section className="flex gap-20 mt-10">
         <CareerFilter />
         <ApplicantionList />
-        {/* <CareerList /> */}
       </section>
     </main>
   );

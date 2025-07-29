@@ -12,8 +12,6 @@ export const useFilteredApplications = (
   const employments = searchParams.getAll("employments");
   const places = searchParams.getAll("places");
 
-  if (!applications) return [];
-
   let filteredApplications = applications;
 
   if (searchTerm.trim()) {
