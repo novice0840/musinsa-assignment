@@ -25,7 +25,6 @@ export class JobController {
     description: '채용 공고 목록을 성공적으로 조회했습니다.',
   })
   findAll() {
-    console.log('Fetching all job postings');
     return this.jobService.findAll();
   }
 }

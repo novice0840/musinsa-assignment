@@ -69,12 +69,6 @@ export class ApplicationController {
       portfolio?: Express.Multer.File[];
     },
   ) {
-    console.log('Received createApplicationDto:', createApplicationDto);
-    console.log(
-      'Received files2:',
-      files.resume?.[0]?.path,
-      files.portfolio?.[0]?.path,
-    );
     // return this.applicationService.create(createApplicationDto, files);
   }
 

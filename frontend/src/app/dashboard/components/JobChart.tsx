@@ -72,10 +72,10 @@ export function JobChart() {
               type="category"
               tickLine={false}
               tickMargin={10}
-              axisLine={false}
               hide
+              axisLine={false}
             />
-            <XAxis dataKey="applicantCount" type="number" hide />
+            <XAxis dataKey="applicantCount" type="number" />
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent indicator="line" />}
