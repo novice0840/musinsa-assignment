@@ -1,6 +1,6 @@
 import CareerFilter from "@/components/CareerFilter";
 import CareerList from "@/components/CareerList";
-import React from "react";
+import ApplicantionList from "./components/ApplicantionList";
 
 const ApplicationsPage = () => {
   return (
@@ -8,7 +8,8 @@ const ApplicationsPage = () => {
       <div className="text-5xl font-bold">지원자 현황</div>
       <section className="flex gap-20 mt-10">
         <CareerFilter />
-        <CareerList />
+        <ApplicantionList />
+        {/* <CareerList /> */}
       </section>
     </main>
   );
