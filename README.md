@@ -12,6 +12,10 @@ cd backend
 npm run start:dev
 ```
 
+## 배포 링크
+
+https://musinsa-assignment-psi.vercel.app/
+
 ## Tech Stack
 
 - Frontend: React, Next.js, Tailwind CSS, Shadcn/ui,Tanstack-query
