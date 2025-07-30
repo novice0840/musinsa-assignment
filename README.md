@@ -2,6 +2,16 @@
 
 무신사 Frontend Engineer Assistant (채용 시스템) 사전 과제
 
+## 로컬 실행 방법
+
+```
+cd frontend
+npm run dev
+
+cd backend
+npm run start:dev
+```
+
 ## Tech Stack
 
 - Frontend: React, Next.js, Tailwind CSS, Shadcn/ui,Tanstack-query
