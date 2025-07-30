@@ -14,7 +14,7 @@ npm run start:dev
 
 ## 배포 링크
 
-https://musinsa-assignment-psi.vercel.app/
+http://13.124.226.247:3000
 
 ## Tech Stack
 
